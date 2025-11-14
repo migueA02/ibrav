@@ -1,9 +1,14 @@
 "use client";
-import { useRouter } from "next/navigation";
 import React from "react";
+import { useRouter } from "next/navigation";
+import CardComponent from "../utils/card";
+import { EVENTS } from "@/utils/dummy";
+import { ChurchEvent } from "@/types/event";
 
 const EventsComponent = () => {
   const router = useRouter();
+
+  const events: ChurchEvent[] = EVENTS?.slice(0, 3);
 
   return (
     <div className="bg-[#170f40] py-14 w-full flex justify-center items-center flex-col gap-24 px-8">
@@ -21,9 +26,9 @@ const EventsComponent = () => {
 
       <div className="w-full flex flex-col justify-center items-center gap-10">
         <div className="w-full flex gap-7 flex-col md:flex-row">
-          <div className="w-full h-[300px] bg-white/10 backdrop-blur-lg rounded-2xl hover:scale-105 transition-all duration-300"></div>
-          <div className="w-full h-[300px] bg-white/10 backdrop-blur-lg rounded-2xl hover:scale-105 transition-all duration-300"></div>
-          <div className="w-full h-[300px] bg-white/10 backdrop-blur-lg rounded-2xl hover:scale-105 transition-all duration-300"></div>
+          {events?.map((event) => (
+            <CardComponent key={event?.id} type="eventos" data={event} />
+          ))}
         </div>
         <button
           onClick={() => router?.push("/eventos")}

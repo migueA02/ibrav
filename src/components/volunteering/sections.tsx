@@ -4,7 +4,7 @@ import VolunteeringForm from "./form";
 
 const SectionsComponent = () => {
   return (
-    <div className="w-full bg-[#170f40]  py-24 flex flex-col items-center space-y-32">
+    <div className="w-full bg-[#170f40]  py-24 flex flex-col items-center space-y-32 mt-20">
       <div className="px-6 md:px-20 space-y-32">
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16 ">
           <div className="flex-1 space-y-3">

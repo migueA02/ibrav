@@ -1,10 +1,13 @@
-'use client'
+"use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-
+import { RESOURCES } from "@/utils/dummy";
+import CardComponent from "../utils/card";
 
 const ResourcesComponent = () => {
   const router = useRouter();
+
+  const resource = RESOURCES?.slice(0, 3);
 
   return (
     <div
@@ -30,11 +33,14 @@ const ResourcesComponent = () => {
 
         <div className="w-full flex flex-col justify-center items-center gap-10">
           <div className="w-full flex gap-7 flex-col md:flex-row">
-            <div className="w-full h-[300px] bg-white/10 backdrop-blur-lg rounded-2xl hover:scale-105 transition-all duration-300"></div>
-            <div className="w-full h-[300px] bg-white/10 backdrop-blur-lg rounded-2xl hover:scale-105 transition-all duration-300"></div>
-            <div className="w-full h-[300px] bg-white/10 backdrop-blur-lg rounded-2xl hover:scale-105 transition-all duration-300"></div>
+            {resource?.map((item) => (
+              <CardComponent key={item?.id} type="recursos" data={item} />
+            ))}
           </div>
-          <button onClick={() => router?.push('/recursos')} className="cursor-pointer bg-white/10 backdrop-blur-lg rounded-full px-5 py-2 text-white hover:scale-105 transition-all duration-300 w-fit">
+          <button
+            onClick={() => router?.push("/recursos")}
+            className="cursor-pointer bg-white/10 backdrop-blur-lg rounded-full px-5 py-2 text-white hover:scale-105 transition-all duration-300 w-fit"
+          >
             Ver mas recursos
           </button>
         </div>

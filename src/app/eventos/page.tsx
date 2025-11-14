@@ -1,3 +1,5 @@
+import CardComponent from "@/components/utils/card";
+import { EVENTS } from "@/utils/dummy";
 import React from "react";
 
 const EventsPage = () => {
@@ -26,13 +28,10 @@ const EventsPage = () => {
 
       <div className="h-full w-full bg-[#170f40] px-10 md:px-20 py-10">
         {/* <input type="text" className="w-full" /> */}
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-9 ">
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-9 ">
           {" "}
-          {[1, 2, 3, 4, 5, 6, 7,9].map((item) => (
-            <div
-              key={item}
-              className="h-[200px] bg-white/10 backdrop-blur-lg rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg cursor-pointer"
-            ></div>
+          {EVENTS.map((item, index) => (
+            <CardComponent key={index} type="eventos" data={item} />
           ))}
         </div>
       </div>

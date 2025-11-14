@@ -1,13 +1,25 @@
-import CardComponent from "@/components/utils/card";
-import { RESOURCES } from "@/utils/dummy";
+"use client";
 import React from "react";
+import dayjs from "dayjs";
+import EventSection from "@/components/utils/section";
+import { EVENTS, RESOURCES } from "@/utils/dummy";
+import { useParams } from "next/navigation";
+import { PiClockBold } from "react-icons/pi";
+import "dayjs/locale/es";
+dayjs.locale("es");
 
 const ResourcesPage = () => {
+  const { id } = useParams();
+
+  const resource = RESOURCES?.find(
+    (item) => item?.id == parseInt(id as string)
+  );
+
   return (
-    <>
+    <div>
       <div
         className="relative h-[500px] flex items-center justify-center overflow-x-hidden pl-16 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/meet.jpg')" }}
+        style={{ backgroundImage: `url(${resource?.image})` }}
       >
         <div className="absolute inset-0 bg-black/70"></div>
 
@@ -16,27 +28,21 @@ const ResourcesPage = () => {
         <div className="relative flex-1 flex items-center justify-center z-10">
           <div className="max-w-2xl text-center">
             <h1 className="text-5xl font-semibold tracking-tight sm:text-7xl text-white">
-              CRECÉ EN TU FE
+              {resource?.name}
             </h1>
             <p className="mt-8 text-lg text-gray-200">
-              Compartimos recursos que inspiran, enseñan y acompañan tu vida
-              diaria con la Palabra de Dios, recordándote que Él siempre está
-              con vos.
+              {resource?.description}
             </p>
           </div>
         </div>
       </div>
 
-      <div className="h-full w-full bg-[#170f40] px-10 md:px-20 py-10">
-        {/* <input type="text" className="w-full" /> */}
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9 ">
-          {" "}
-          {RESOURCES.map((item) => (
-           <CardComponent key={item?.id} type="recursos" data={item}/>
-          ))}
-        </div>
+      <div className="h-full w-full bg-[#170f40] px-10 md:px-20 lg:px-50 py-10 ">
+        {resource?.sections?.map((section, index) => (
+          <EventSection key={index}  section={section} />
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 

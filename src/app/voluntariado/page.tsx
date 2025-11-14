@@ -3,7 +3,7 @@ import SectionsComponent from "@/components/volunteering/sections";
 
 const VolunteeringPage = () => {
   return (
-    <>
+    <div className="bg-[#170f40]">
       <div
         className="relative h-[500px] flex items-center justify-center overflow-x-hidden pl-16 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/images/volunteering.jpg')" }}
@@ -27,7 +27,7 @@ const VolunteeringPage = () => {
       </div>
 
      <SectionsComponent/>
-    </>
+    </div>
   );
 };
 
