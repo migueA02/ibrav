@@ -13,9 +13,9 @@ interface Props {
   date?: EventDate;
 }
 
-const EventSection: React.FC<Props> = ({ date, section }) => {
-  const images = section.multimedia.filter((m) => m.type === "image");
-  const videos = section.multimedia.filter((m) => m.type === "video");
+const EventSection: React.FC<Props> = ({ section }) => {
+  const images = section.multimedia.filter((m: any) => m.type === "image");
+  const videos = section.multimedia.filter((m: any) => m.type === "video");
 
   const renderImages = () => {
     const count = images.length;
@@ -33,7 +33,7 @@ const EventSection: React.FC<Props> = ({ date, section }) => {
     if (count === 2) {
       return (
         <div className="grid grid-cols-2 gap-3">
-          {images.map((img, idx) => (
+          {images.map((img:any, idx:any) => (
             <img
               key={idx}
               src={img.src}
@@ -72,7 +72,7 @@ const EventSection: React.FC<Props> = ({ date, section }) => {
     // 4 o más imágenes: grid flexible
     return (
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-        {images.map((img, idx) => (
+        {images.map((img: any, idx: number) => (
           <img
             key={idx}
             src={img.src}
@@ -97,7 +97,7 @@ const EventSection: React.FC<Props> = ({ date, section }) => {
       {images.length > 0 && renderImages()}
 
       {videos.length > 0 &&
-        videos.map((video, idx) => {
+        videos.map((video: any, idx:any) => {
           // Extraer ID de YouTube si es una URL
           let videoId = video.src;
           if (
