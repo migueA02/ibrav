@@ -26,7 +26,7 @@ const NavbarComponent = () => {
     router?.push(patch);
     setMobileMenuOpen(false);
   };
-  
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 w-full transition-all duration-300 ${
@@ -54,12 +54,15 @@ const NavbarComponent = () => {
                 pathname === item.name?.toLowerCase()
                   ? "text-gray-500"
                   : "text-white",
-                `text-sm/6 font-semibold transition-colors duration-300  hover:text-gray-500 cursor-pointer`
+                `text-sm/6 font-semibold transition-colors duration-300 hover:text-gray-500 cursor-pointer`
               )}
             >
               {item.name}
             </button>
           ))}
+          <button onClick={() => router?.push('/contactenos')} className="bg-[#170f40] text-sm/6 font-semibold transition-transform duration-300 cursor-pointer text-white px-6 py-2 rounded-full hover:scale-105 ">
+            Contactenos
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -110,7 +113,7 @@ const NavbarComponent = () => {
                 {NAVIGATION.map((item) => (
                   <button
                     key={item.name}
-                    onClick={() => handleReadirect  (item?.href)}
+                    onClick={() => handleReadirect(item?.href)}
                     className={classNames(
                       pathname === item.name?.toLowerCase() ? "" : "",
                       "-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white cursor-pointer"

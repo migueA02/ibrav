@@ -32,11 +32,17 @@ const EventsPage = () => {
 
       {/* Contenedor de tarjetas */}
       <div className="h-full w-full bg-[#170f40] px-6 md:px-20 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
-          {EVENTS.map((item, index) => (
-            <CardComponent key={index} type="eventos" data={item} />
-          ))}
-        </div>
+        {EVENTS?.length ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
+            {EVENTS.map((item, index) => (
+              <CardComponent key={index} type="eventos" data={item} />
+            ))}
+          </div>
+        ) : (
+          <h3 className="text-3xl font-semibold tracking-tight sm:text-4xl text-white text-center">
+            Aun no hay eventos programados
+          </h3>
+        )}
       </div>
     </div>
   );

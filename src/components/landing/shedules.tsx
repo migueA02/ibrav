@@ -1,6 +1,38 @@
 import React from "react";
 
 const SchedulesComponent = () => {
+  const SCHEDULES = [
+   {
+      title: "Escuela De Obreros",
+      day: "Martes",
+      time: "6:30 pm",
+      site: "Templo",
+    },
+    {
+      title: "Noches De Oracion",
+      day: "Miercoles",
+      time: "6:30 pm",
+      site: "Templo",
+    },
+     {
+      title: "Red De Alabanza y Adoracion",
+      day: "Jueves",
+      time: "6:30 pm",
+      site: "Templo",
+    },
+    {
+      title: "Culto De Jovenes",
+      day: "Sabados",
+      time: "7 pm",
+      site: "Templo",
+    },
+     {
+      title: "Culto",
+      day: "Domingos",
+      time: "10 am",
+      site: "Templo",
+    },
+  ];
   return (
     <div
       className="relative flex flex-col p-8 gap-24 bg-cover bg-center bg-no-repeat w-full"
@@ -24,19 +56,17 @@ const SchedulesComponent = () => {
           </div>
         </div>
         <div className="w-full flex flex-wrap justify-around gap-10 ">
-          {[1, 2, 3, 4].map((i) => (
+          {SCHEDULES.map((i) => (
             <div
-              key={i}
+              key={i?.day}
               className="flex flex-col justify-center items-center bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-md w-full max-w-[300px]"
             >
               <h3 className="text-white font-extrabold font-inter text-2xl">
-                Miércoles
+               {i?.day}
               </h3>
-              <p className="text-white font-normal text-lg">Templo</p>
-              <p className="text-white font-normal text-lg">
-                Noches de culto
-              </p>
-              <p className="text-white font-medium text-lg">7 PM</p>
+              <p className="text-white font-normal text-lg">{i?.site}</p>
+              <p className="text-white font-normal text-lg">{i?.title}</p>
+              <p className="text-white font-medium text-lg">{i?.time}</p>
             </div>
           ))}
         </div>

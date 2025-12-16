@@ -25,7 +25,27 @@ const EventsComponent = () => {
       </div>
 
       <div className="w-full flex flex-col justify-center items-center gap-10">
-        <div className="w-full flex gap-7 flex-col md:flex-row">
+        {events?.length ? (
+          <>
+            {" "}
+            <div className="w-full flex gap-7 flex-col md:flex-row">
+              {events?.map((event) => (
+                <CardComponent key={event?.id} type="eventos" data={event} />
+              ))}
+            </div>
+            <button
+              onClick={() => router?.push("/eventos")}
+              className="cursor-pointer bg-white/10 backdrop-blur-lg rounded-full px-5 py-2 text-white hover:scale-105 transition-all duration-300 w-fit"
+            >
+              Ver mas eventos
+            </button>
+          </>
+        ) : (
+          <h3 className="text-3xl font-semibold tracking-tight sm:text-4xl text-white text-center">
+            Aun no hay eventos programados
+          </h3>
+        )}
+        {/* <div className="w-full flex gap-7 flex-col md:flex-row">
           {events?.map((event) => (
             <CardComponent key={event?.id} type="eventos" data={event} />
           ))}
@@ -35,7 +55,7 @@ const EventsComponent = () => {
           className="cursor-pointer bg-white/10 backdrop-blur-lg rounded-full px-5 py-2 text-white hover:scale-105 transition-all duration-300 w-fit"
         >
           Ver mas eventos
-        </button>
+        </button> */}
       </div>
     </div>
   );

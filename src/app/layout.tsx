@@ -4,6 +4,8 @@ import "./globals.css";
 import NavbarComponent from "@/components/navbar";
 import { Dancing_Script } from "next/font/google";
 import FooterComponent from "@/components/footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -40,6 +42,7 @@ export default function RootLayout({
         <NavbarComponent/>
         {children}
         <FooterComponent/>
+        <ToastContainer />
       </body>
     </html>
   );
